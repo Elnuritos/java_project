@@ -1,0 +1,14 @@
+configuration:
+  swagger:
+    app: 'Demo app'
+    description: 'A simple demo app built with Spring Boot'
+    developer: 'Elnur Safarov'
+    email: 'elnur.safarov@stu.ibu.edu.ba'
+  emailsender:
+    default: 'smtp'
+  spring:
+    data:
+      mongodb:
+        host: localhost
+        port: 27017
+        database: test
