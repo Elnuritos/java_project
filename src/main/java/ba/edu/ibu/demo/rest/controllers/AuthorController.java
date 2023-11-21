@@ -1,8 +1,7 @@
 package ba.edu.ibu.demo.rest.controllers;
 
-import ba.edu.ibu.demo.core.exceptions.BadRequestException;
-import ba.edu.ibu.demo.core.exceptions.NotFoundException;
-import ba.edu.ibu.demo.core.model.Author;
+import ba.edu.ibu.demo.core.exceptions.general.BadRequestException;
+import ba.edu.ibu.demo.core.exceptions.general.NotFoundException;
 import ba.edu.ibu.demo.core.service.AuthorService;
 import ba.edu.ibu.demo.rest.dto.AuthorDTO;
 import ba.edu.ibu.demo.rest.dto.AuthorRequestDTO;

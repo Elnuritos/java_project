@@ -12,3 +12,6 @@ configuration:
         host: localhost
         port: 27017
         database: test
+  security:
+    jwt:
+      secret: 'someSecretKey'

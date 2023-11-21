@@ -1,7 +1,7 @@
 package ba.edu.ibu.demo.core.service;
 
 import ba.edu.ibu.demo.core.api.mailsender.EmailService;
-import ba.edu.ibu.demo.core.exceptions.NotFoundException;
+import ba.edu.ibu.demo.core.exceptions.general.NotFoundException;
 import ba.edu.ibu.demo.core.model.Publisher;
 import ba.edu.ibu.demo.core.repository.PublisherRepository;
 import ba.edu.ibu.demo.rest.dto.PublisherDTO;
