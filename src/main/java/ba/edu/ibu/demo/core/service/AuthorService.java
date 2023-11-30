@@ -3,6 +3,7 @@ package ba.edu.ibu.demo.core.service;
 import ba.edu.ibu.demo.core.exceptions.general.BadRequestException;
 import ba.edu.ibu.demo.core.exceptions.general.NotFoundException;
 import ba.edu.ibu.demo.core.model.Author;
+import ba.edu.ibu.demo.core.model.AuthorGroup;
 import ba.edu.ibu.demo.core.repository.AuthorRepository;
 import ba.edu.ibu.demo.rest.dto.AuthorRequestDTO;
 import org.springframework.stereotype.Service;
@@ -56,4 +57,16 @@ public class AuthorService {
         return new AuthorDTO(updatedAuthor);
     }
 
+    public List<AuthorDTO> findAuthorsByName(String name) {
+        List<Author> authors = authorRepository.findByName(name);
+        return authors.stream().map(AuthorDTO::new).collect(Collectors.toList());
+    }
+
+    public List<AuthorDTO> findAuthorsByNationality(String nationality) {
+        List<Author> authors = authorRepository.findByNationality(nationality);
+        return authors.stream().map(AuthorDTO::new).collect(Collectors.toList());
+    }
+    public List<AuthorGroup> findAuthorsByCustomCriteria(String namePattern, String nationality) {
+        return authorRepository.findAuthorsByCustomCriteria(namePattern, nationality);
+    }
 }

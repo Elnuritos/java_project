@@ -1,18 +1,14 @@
 package ba.edu.ibu.demo.rest.filters;
 
-
-
-import ba.edu.ibu.demo.core.exceptions.repository.ResourceNotFoundException;
 import ba.edu.ibu.demo.core.service.JwtService;
 import ba.edu.ibu.demo.core.service.UserService;
 import com.mongodb.lang.NonNull;
+import org.apache.commons.lang3.StringUtils;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -59,4 +55,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
         filterChain.doFilter(request, response);
     }
+
+
 }

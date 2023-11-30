@@ -33,8 +33,10 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers(HttpMethod.GET, "/api/books/**").permitAll()
-                        .requestMatchers("/api/books/**").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/api/authors/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/authors/**").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/api/publishers/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/publishers/**").authenticated()
                         .requestMatchers("/api/users/**").authenticated()
                         .anyRequest().permitAll())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

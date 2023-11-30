@@ -2,6 +2,7 @@ package ba.edu.ibu.demo.rest.controllers;
 
 import ba.edu.ibu.demo.core.exceptions.general.BadRequestException;
 import ba.edu.ibu.demo.core.exceptions.general.NotFoundException;
+import ba.edu.ibu.demo.core.model.AuthorGroup;
 import ba.edu.ibu.demo.core.service.AuthorService;
 import ba.edu.ibu.demo.rest.dto.AuthorDTO;
 import ba.edu.ibu.demo.rest.dto.AuthorRequestDTO;
@@ -65,6 +66,22 @@ public class AuthorController {
         } catch (NotFoundException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @GetMapping("/search/byName")
+    public List<AuthorDTO> findAuthorsByName(@RequestParam String name) {
+        return authorService.findAuthorsByName(name);
+    }
+
+    @GetMapping("/search/byNationality")
+    public List<AuthorDTO> findAuthorsByNationality(@RequestParam String nationality) {
+        return authorService.findAuthorsByNationality(nationality);
+    }
+
+    @GetMapping("/customSearch")
+    public List<AuthorGroup> findAuthorsByCustomCriteria(@RequestParam String namePattern,
+                                                         @RequestParam String nationality) {
+        return authorService.findAuthorsByCustomCriteria(namePattern, nationality);
     }
 }
 
