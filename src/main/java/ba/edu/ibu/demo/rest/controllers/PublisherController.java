@@ -1,8 +1,7 @@
 package ba.edu.ibu.demo.rest.controllers;
 
-import ba.edu.ibu.demo.core.exceptions.BadRequestException;
-import ba.edu.ibu.demo.core.exceptions.NotFoundException;
-import ba.edu.ibu.demo.core.model.Publisher;
+import ba.edu.ibu.demo.core.exceptions.general.BadRequestException;
+import ba.edu.ibu.demo.core.exceptions.general.NotFoundException;
 import ba.edu.ibu.demo.core.service.PublisherService;
 import ba.edu.ibu.demo.rest.dto.PublisherDTO;
 import ba.edu.ibu.demo.rest.dto.PublisherRequestDTO;

@@ -1,4 +1,4 @@
-package ba.edu.ibu.demo.core.exceptions;
+package ba.edu.ibu.demo.core.exceptions.general;
 
 public class NotFoundException extends RuntimeException {
     public NotFoundException(String id) {
