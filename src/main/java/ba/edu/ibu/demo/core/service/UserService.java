@@ -3,19 +3,18 @@ package ba.edu.ibu.demo.core.service;
 
 
 import ba.edu.ibu.demo.core.exceptions.repository.ResourceNotFoundException;
+import ba.edu.ibu.demo.core.model.Publication;
 import ba.edu.ibu.demo.core.model.User;
+import ba.edu.ibu.demo.core.repository.PublicationRepository;
 import ba.edu.ibu.demo.core.repository.UserRepository;
 import ba.edu.ibu.demo.rest.dto.UserDTO;
 import ba.edu.ibu.demo.rest.dto.UserRequestDTO;
-import io.jsonwebtoken.JwtBuilder;
-import io.jsonwebtoken.Jwts;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.io.NotActiveException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,9 +23,11 @@ import static java.util.stream.Collectors.toList;
 @Service
 public class UserService {
     private final UserRepository userRepository;
+    private final PublicationRepository publicationRepository;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PublicationRepository publicationRepository) {
         this.userRepository = userRepository;
+        this.publicationRepository = publicationRepository;
     }
 
     public List<UserDTO> getUsers() {
@@ -82,5 +83,19 @@ public class UserService {
                         .orElseThrow(() -> new UsernameNotFoundException("User not found"));
             }
         };
+    }
+
+    public List<Publication> getPublicationByUser(String userId) {
+        Optional<User> user = userRepository.findById(userId);
+        if (user.isEmpty()) {
+            throw new ResourceNotFoundException("The user with the given ID does not exist.");
+        }
+        List<String> borrowedPublicationIds = user.get().getBorrowedPublications();
+        List<Publication> publications = new ArrayList<>();
+        for (String id: borrowedPublicationIds) {
+            Optional<Publication> book = publicationRepository.findById(id);
+            book.ifPresent(publications::add);
+        }
+        return publications;
     }
 }

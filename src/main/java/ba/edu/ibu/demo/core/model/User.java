@@ -22,6 +22,8 @@ public class User implements UserDetails {
     private String username;
     private String password;
     private Date creationDate;
+
+    private List<String> borrowedPublications;
     @Override
     public boolean isAccountNonExpired() {
         return true;
@@ -114,5 +116,13 @@ public class User implements UserDetails {
 
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
+    }
+
+    public void setBorrowedPublications(List<String> borrowedPublications) {
+        this.borrowedPublications = borrowedPublications;
+    }
+
+    public List<String> getBorrowedPublications() {
+        return borrowedPublications;
     }
 }
