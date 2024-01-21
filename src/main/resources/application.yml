@@ -6,12 +6,7 @@ configuration:
     email: 'elnur.safarov@stu.ibu.edu.ba'
   emailsender:
     default: 'smtp'
-  spring:
-    data:
-      mongodb:
-        host: localhost
-        port: 27017
-        database: test
+
   security:
     jwt:
       secret: 'mXLjT3Gm4skNsCdntWodbHPb1GqY35fGVaisLwImIp8cLZP7W6'
@@ -19,3 +14,9 @@ configuration:
   management:
     security:
       enabled: false
+
+  spring:
+    data:
+      mongodb:
+        database: engineering
+        uri: mongodb+srv://elnursafarov:xnOIqTgrj1g91mai@cluster0.qsbxawv.mongodb.net/?retryWrites=true&w=majority
