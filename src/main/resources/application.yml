@@ -18,5 +18,6 @@ configuration:
   spring:
     data:
       mongodb:
-        database: engineering
-        uri: mongodb+srv://elnursafarov:xnOIqTgrj1g91mai@cluster0.qsbxawv.mongodb.net/?retryWrites=true&w=majority
+        host: localhost
+        port: 27017
+        database: test
